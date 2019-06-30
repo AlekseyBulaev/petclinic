@@ -1,5 +1,4 @@
 package edu.abulaev.petclinic.model;
 
-public class Owner extends Person {
-
+public class Vet extends Person {
 }
