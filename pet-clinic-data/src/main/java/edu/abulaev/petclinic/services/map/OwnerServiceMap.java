@@ -1,13 +1,13 @@
 package edu.abulaev.petclinic.services.map;
 
 import edu.abulaev.petclinic.model.Owner;
-import edu.abulaev.petclinic.services.CrudService;
+import edu.abulaev.petclinic.services.OwnerService;
 
 import java.util.Set;
 
 
 public class OwnerServiceMap extends AbstractMapService<Owner, Long>
-        implements CrudService<Owner, Long> {
+        implements OwnerService {
     @Override
     public Set<Owner> findAll() {
         return super.findAll();
@@ -31,5 +31,10 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long>
     @Override
     public void deleteById(Long id) {
         super.deleteById(id);
+    }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return null;
     }
 }

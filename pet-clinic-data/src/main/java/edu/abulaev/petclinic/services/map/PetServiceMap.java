@@ -1,12 +1,12 @@
 package edu.abulaev.petclinic.services.map;
 
 import edu.abulaev.petclinic.model.Pet;
-import edu.abulaev.petclinic.services.CrudService;
+import edu.abulaev.petclinic.services.PetService;
 
 import java.util.Set;
 
 public class PetServiceMap extends AbstractMapService<Pet, Long>
-    implements CrudService<Pet, Long> {
+    implements PetService {
     @Override
     public Set<Pet> findAll() {
         return super.findAll();
