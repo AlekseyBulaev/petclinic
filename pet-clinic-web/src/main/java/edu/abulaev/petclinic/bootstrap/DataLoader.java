@@ -1,6 +1,7 @@
 package edu.abulaev.petclinic.bootstrap;
 
 import edu.abulaev.petclinic.model.Owner;
+import edu.abulaev.petclinic.model.Pet;
 import edu.abulaev.petclinic.model.PetType;
 import edu.abulaev.petclinic.model.Vet;
 import edu.abulaev.petclinic.services.OwnerService;
@@ -8,6 +9,8 @@ import edu.abulaev.petclinic.services.PetTypeService;
 import edu.abulaev.petclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -38,6 +41,17 @@ public class DataLoader implements CommandLineRunner {
 
         owner1.setFirstName("Ivan");
         owner1.setLastName("Ivanov");
+        owner1.setAddress("Polezhaevskaya");
+        owner1.setCity("Moscow");
+        owner1.setTelephone("1234567890");
+
+
+        Pet ivanovsPet = new Pet();
+        ivanovsPet.setPetType(savedCatType);
+        ivanovsPet.setOwner(owner1);
+        ivanovsPet.setBirthday(LocalDate.now());
+        ivanovsPet.setName("ruda");
+        owner1.getPets().add(ivanovsPet);
 
         ownerService.save(owner1);
 
@@ -45,6 +59,16 @@ public class DataLoader implements CommandLineRunner {
 
         owner2.setFirstName("Petya");
         owner2.setLastName("Petrov");
+        owner2.setAddress("Nevskiy bulvar");
+        owner2.setCity("St.Petersburg");
+        owner2.setTelephone("0987654321");
+
+        Pet petrovsPet = new Pet();
+        petrovsPet.setPetType(savedDogType);
+        petrovsPet.setOwner(owner2);
+        petrovsPet.setBirthday(LocalDate.now());
+        petrovsPet.setName("Buba");
+        owner2.getPets().add(petrovsPet);
 
         ownerService.save(owner2);
 
