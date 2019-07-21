@@ -2,9 +2,11 @@ package edu.abulaev.petclinic.services.map;
 
 import edu.abulaev.petclinic.model.Visit;
 import edu.abulaev.petclinic.services.VisitService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class VisitMapService extends AbstractMapService<Visit, Long>
         implements VisitService {
 

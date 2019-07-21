@@ -1,6 +1,7 @@
 package edu.abulaev.petclinic.bootstrap;
 
 import edu.abulaev.petclinic.model.*;
+import edu.abulaev.petclinic.repositories.VisitService;
 import edu.abulaev.petclinic.services.OwnerService;
 import edu.abulaev.petclinic.services.PetTypeService;
 import edu.abulaev.petclinic.services.SpecialtyService;
@@ -17,13 +18,15 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialityService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialityService, VisitService visitService) {
 
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -91,6 +94,13 @@ public class DataLoader implements CommandLineRunner {
         owner2.getPets().add(petrovsPet);
 
         ownerService.save(owner2);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(petrovsPet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sneezy kitty");
+
+        visitService.save(catVisit);
 
         System.out.println("Loaded owners ...");
 
